@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-test-api
+  namespace: devops-test
+  labels:
+    app: devops-test-api 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-test-api
+  template:
+    metadata:
+      labels:
+        app: devops-test-api
+    spec:
+      containers:
+      - name: devops-test-api
+        image: 
+        ports:
+        - containerPort: 8080

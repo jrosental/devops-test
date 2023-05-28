@@ -1,0 +1,38 @@
+version: 3.7
+
+services:
+
+    devops-api:
+        image: localhost/jrosental/devops-test
+        container_name: devops-api
+        restart: always
+        ports:
+            - "8080:8080"
+        networks:
+            - some-network
+        environment:
+            - DBUSER=devops
+            - DBPASS=test
+            - DBHOST=192.168.1.146:3306
+        depends_on:
+            - devops-db
+
+
+    devops-db:
+        image: docker.io/library/mariadb:latest
+        container_name: mariadb
+        restart: always
+        ports:
+            - "3306:3306"
+        networks:
+            - some-network
+        volumes:
+            - ./database-scripts:/docker-entrypoint-initdb.d:Z
+        environment:
+            - MARIADB_ROOT_PASSWORD=1234
+            - MARIADB_DATABASE=users
+            - MARIADB_USER=devops
+            - MARIADB_PASSWORD=test
+
+networks:
+  some-network: {}

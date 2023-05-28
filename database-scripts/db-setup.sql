@@ -1,0 +1,10 @@
+DROP DATABASE IF EXISTS users;
+CREATE DATABASE users;
+USE users;
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+  id         INT AUTO_INCREMENT NOT NULL,
+  username      VARCHAR(128) UNIQUE NOT NULL,
+  dateOfBirth	DATE NOT NULL,
+  PRIMARY KEY (`id`)
+);
