@@ -1,4 +1,4 @@
-module github.com/jrosental/devops_test
+module github.com/jrosental/devops-test
 
 go 1.19
 
